@@ -1,40 +1,43 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
+        <title>João Ferreira · Front-End Developer</title>
 
         <meta
             name="description"
-            content="Welcome to my portfolio website. I am a mobile development student passionate about building seamless, user-friendly, and high-performance Android applications."
+            content="João Ferreira, Front-End Developer in Lisbon. Websites in Webflow and WordPress, HTML email, and React Native apps with Firebase and Node.js."
         />
+        <link rel="canonical" href="https://m4ferreirac.github.io/" />
 
-        <meta itemprop="name" content="João Ferreira's Portfolio" />
-        <meta
-            itemprop="description"
-            content="Welcome to my portfolio website. I am a mobile development student passionate about building seamless, user-friendly, and high-performance Android applications."
-        />
-
-        <!-- Facebook Meta Tags -->
-        <meta property="og:url" content="https://ossportfolio.netlify.app" />
+        <!-- Open Graph -->
+        <meta property="og:url" content="https://m4ferreirac.github.io/" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="João Ferreira's Portfolio" />
+        <meta property="og:title" content="João Ferreira · Front-End Developer" />
         <meta
             property="og:description"
-            content="Welcome to my portfolio website. I am a mobile development student passionate about building seamless, user-friendly, and high-performance Android applications."
+            content="Websites in Webflow and WordPress, HTML email, and React Native apps with Firebase and Node.js."
+        />
+        <meta
+            property="og:image"
+            content="https://m4ferreirac.github.io/assets/images/work/portfolio-mappie.webp"
         />
 
-        <!-- Twitter Meta Tags -->
+        <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="João Ferreira's Portfolio" />
+        <meta name="twitter:title" content="João Ferreira · Front-End Developer" />
         <meta
             name="twitter:description"
-            content="Welcome to my portfolio website. I am a mobile development student passionate about building seamless, user-friendly, and high-performance Android applications."
+            content="Websites in Webflow and WordPress, HTML email, and React Native apps with Firebase and Node.js."
         />
 
-        <!-- Preloading fonts for better performance -->
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c0b0a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-weight='700' font-size='30' fill='%23c8ff3d'%3EJF%3C/text%3E%3C/svg%3E"
+        />
+
         <link
             rel="preload"
             href="assets/fonts/Mona-Sans.woff2"
@@ -43,225 +46,512 @@
             crossorigin
         />
 
+        <!-- Apply the saved theme before first paint -->
+        <script>
+            document.documentElement.classList.add("js");
+            try {
+                const t = localStorage.getItem("theme");
+                if (t === "light" || t === "dark")
+                    document.documentElement.dataset.theme = t;
+            } catch (e) {}
+        </script>
+
         <link rel="stylesheet" href="style.css" />
         <script src="script.js" defer></script>
-
-        <title>João Ferreira's Portfolio</title>
     </head>
 
     <body>
-        <script>
-            const theme = localStorage.getItem("theme") || "dark";
-            document.body.classList.add(theme);
-        </script>
+        <a class="skip-link" href="#main">Skip to content</a>
 
-        <header class="header">
-            <div class="menu-btn-container">
-                <div class="container">
-                    <button type="button" class="menu-btn">menu</button>
-                </div>
-            </div>
+        <!-- ============ NAV ============ -->
+        <header class="site-header">
+            <div class="container nav-bar">
+                <a href="#top" class="logo" aria-label="João Ferreira, back to top"
+                    ><span class="accent">&lt;</span>JF<span class="accent">/&gt;</span></a
+                >
 
-            <nav class="nav hidden">
-                <ol class="nav-items">
-                    <li class="nav-item"><a href="#">Home</a></li>
-                    <li class="nav-item"><a href="#work">Work</a></li>
-                    <li class="nav-item"><a href="#skills">Skills</a></li>
-                    <li class="nav-item">
-                        <a href="#experience">Experience</a>
-                    </li>
-                    <li class="nav-item"><a href="#education">Education</a></li>
-                </ol>
-            </nav>
+                <nav class="nav" id="nav" aria-label="Main">
+                    <ul class="nav-items">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#work">Work</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#contact" class="nav-cta">Contact</a></li>
+                    </ul>
+                </nav>
 
-            <div class="container">
-                <div class="header-textbox">
-                    <h1 class="h1">
-                        <span>Hi, I'm João Ferreira</span>
-                        <span>Front-End Developer</span>
-                    </h1>
-
-                    <p class="header-text">
-                        I'm also a Mobile Development Student passionate about
-                        building seamless, user-friendly, and high-performance
-                        mobile applications.
-                    </p>
-
-                    <div class="header-btns">
-                        <a
-                            href="assets/files/CV_JoaoFerreira.pdf"
-                            download
-                            class="btn btn-cta"
-                            >Download CV</a
-                        >
-                        <a href="#work" class="btn btn-secondary"
-                            >See my work</a
-                        >
-                    </div>
+                <div class="nav-actions">
+                    <button
+                        type="button"
+                        class="icon-btn theme-toggle"
+                        aria-label="Toggle light and dark theme"
+                    >
+                        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="4.5" />
+                            <path
+                                d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"
+                            />
+                        </svg>
+                        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" />
+                        </svg>
+                    </button>
+                    <button
+                        type="button"
+                        class="icon-btn menu-btn"
+                        aria-label="Open menu"
+                        aria-expanded="false"
+                        aria-controls="nav"
+                    >
+                        <span></span><span></span>
+                    </button>
                 </div>
             </div>
         </header>
 
-        <main>
-            <section class="work">
+        <main id="main">
+            <!-- ============ HERO ============ -->
+            <section class="hero" id="top">
+                <div class="container hero-inner">
+                    <p class="eyebrow reveal">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        Open to new opportunities · Lisbon, Portugal
+                    </p>
+
+                    <h1 class="hero-title reveal">
+                        <span class="hero-hi">Hi, I'm João Ferreira</span>
+                        <span class="hero-role"
+                            ><span class="accent">&lt;</span>Front-End
+                            Developer<span class="accent"> /&gt;</span></span
+                        >
+                    </h1>
+
+                    <p class="hero-text reveal">
+                        I build websites, HTML emails and mobile apps that are
+                        <span class="typed" aria-hidden="true"></span
+                        ><span class="sr-only">fast, responsive and pixel-perfect</span>.
+                        Two years shipping production work for real clients in
+                        banking, tech and consulting.
+                    </p>
+
+                    <div class="hero-btns reveal">
+                        <a href="#work" class="btn btn-primary">See my work</a>
+                        <a
+                            href="assets/files/CV_JoaoFerreira.pdf"
+                            target="_blank"
+                            rel="noopener"
+                            class="btn btn-ghost"
+                            >View CV
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M7 17 17 7M8 7h9v9" /></svg
+                        ></a>
+                    </div>
+
+                    <ul class="stats reveal" aria-label="Highlights">
+                        <li><strong>2+</strong><span>years as a front-end developer</span></li>
+                        <li><strong>3</strong><span>roles at 2 companies</span></li>
+                        <li><strong>1</strong><span>full site migration to Webflow</span></li>
+                        <li><strong>3</strong><span>mobile apps built solo</span></li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ============ ABOUT ============ -->
+            <section class="section" id="about">
+                <div class="container about">
+                    <h2 class="section-label reveal">// about</h2>
+                    <div class="about-body reveal">
+                        <p class="lead">
+                            I'm a front-end developer who likes the details:
+                            emails that render the same in Outlook and Gmail,
+                            sites that feel fast, and interfaces that match the
+                            design to the pixel.
+                        </p>
+                        <p>
+                            For a bit over two years I've worked on websites in
+                            <strong>Webflow</strong> and
+                            <strong>WordPress</strong> and on
+                            <strong>HTML email</strong>, turning Figma and Adobe
+                            XD designs into production work for agency clients.
+                            Most recently I migrated <strong>uclockit.pt</strong>
+                            to Webflow from start to finish.
+                        </p>
+                        <p>
+                            On the side I build
+                            <strong>React Native</strong> apps with
+                            <strong>Firebase</strong> and
+                            <strong>Node.js</strong>, while finishing a CTeSP in
+                            Mobile Device Development at ISTEC. I speak
+                            Portuguese (native), English (C1) and German (B2).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ EXPERIENCE ============ -->
+            <section class="section" id="experience">
                 <div class="container">
-                    <h2 class="h2" id="work">Work</h2>
-                    <div class="work-boxes">
-                        <div class="work-box">
-                            <div class="work-textbox">
-                                <h3 class="h3">Mappie</h3>
-                                <p class="work-text">
-                                    A React Native mobile app that helps users
-                                    locate nearby EV charging stations.
-                                    <br /><br />
-                                    This project was created as part of my
-                                    university coursework.
+                    <h2 class="section-label reveal">// experience</h2>
+
+                    <ol class="timeline">
+                        <li class="tl-item reveal">
+                            <div class="tl-meta">
+                                <span class="tl-date">04/2026 – 11/2026</span>
+                                <span class="tl-place">Remote</span>
+                            </div>
+                            <div class="tl-body">
+                                <h3>
+                                    Front-End Developer
+                                    <span class="at">@ uClockit</span>
+                                </h3>
+                                <ul class="tl-points">
+                                    <li>
+                                        Migrated <strong>uclockit.pt</strong> from
+                                        SimplySite to Webflow end to end: rebuilt
+                                        every page, set up the blog on Webflow CMS
+                                        and handled DNS and domain setup.
+                                    </li>
+                                    <li>
+                                        Gave the SimplySite sites of uClockit and
+                                        makeitspecial.pt a more modern look with
+                                        custom HTML, CSS and JavaScript.
+                                    </li>
+                                    <li>
+                                        Built the monthly newsletter in responsive,
+                                        table-based HTML, tested in Outlook, Gmail
+                                        and dark mode, and automated sending with
+                                        Pipedrive.
+                                    </li>
+                                    <li>
+                                        Configured Google Ads, cookie consent and
+                                        SEO for the site.
+                                    </li>
+                                </ul>
+                                <ul class="tags">
+                                    <li>Webflow</li><li>SimplySite</li><li>HTML email</li><li>Pipedrive</li><li>SEO</li><li>Google Ads</li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="tl-item reveal">
+                            <div class="tl-meta">
+                                <span class="tl-date">08/2024 – 08/2026</span>
+                                <span class="tl-place">Freelance</span>
+                            </div>
+                            <div class="tl-body">
+                                <h3>
+                                    Front-End Developer
+                                    <span class="at">@ WayNext</span>
+                                </h3>
+                                <ul class="tl-points">
+                                    <li>
+                                        Turned the agency's Figma and Adobe XD
+                                        designs into HTML email templates built
+                                        from scratch, following email best
+                                        practices.
+                                    </li>
+                                    <li>
+                                        Delivered for clients in banking, tech and
+                                        consulting.
+                                    </li>
+                                </ul>
+                                <ul class="tags">
+                                    <li>HTML email</li><li>CSS</li><li>JavaScript</li><li>Figma</li><li>Adobe XD</li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="tl-item reveal">
+                            <div class="tl-meta">
+                                <span class="tl-date">05/2024 – 08/2024</span>
+                                <span class="tl-place">Internship</span>
+                            </div>
+                            <div class="tl-body">
+                                <h3>
+                                    Front-End Developer Intern
+                                    <span class="at">@ WayNext</span>
+                                </h3>
+                                <ul class="tl-points">
+                                    <li>
+                                        Helped build and customise WordPress sites
+                                        and looked after their plugins.
+                                    </li>
+                                    <li>
+                                        Built HTML email templates and more complex
+                                        HTML components that had to work across
+                                        devices.
+                                    </li>
+                                </ul>
+                                <ul class="tags">
+                                    <li>WordPress</li><li>HTML</li><li>CSS</li><li>HTML email</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- ============ WORK ============ -->
+            <section class="section" id="work">
+                <div class="container">
+                    <h2 class="section-label reveal">// work</h2>
+                    <p class="section-intro reveal">
+                        Client work that is live in production, and apps I
+                        designed and built on my own.
+                    </p>
+
+                    <h3 class="sub-label reveal">Client work</h3>
+                    <div class="work-grid">
+                        <!-- uClockit -->
+                        <article class="card card-feature reveal">
+                            <div class="card-visual visual-browser" aria-hidden="true">
+                                <div class="browser">
+                                    <div class="browser-bar">
+                                        <i></i><i></i><i></i>
+                                        <span>uclockit.pt</span>
+                                    </div>
+                                    <div class="browser-page">
+                                        <div class="bp-nav"><b></b><span></span><span></span><span></span></div>
+                                        <div class="bp-hero">
+                                            <div class="bp-lines"><b></b><b></b><span></span><em></em></div>
+                                            <div class="bp-img"></div>
+                                        </div>
+                                        <div class="bp-cards"><span></span><span></span><span></span></div>
+                                    </div>
+                                </div>
+                                <span class="badge">Webflow migration</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-kicker">uClockit · 2026</p>
+                                <h4>uclockit.pt</h4>
+                                <p>
+                                    Rebuilt the whole site in Webflow, moving it off
+                                    SimplySite: every page, a CMS-driven blog, DNS
+                                    and domain setup, SEO, cookie consent and Google
+                                    Ads. Also built the monthly newsletter and its
+                                    Pipedrive automations.
                                 </p>
-                                <ol class="work-technologies">
-                                    <li>Expo</li>
-                                    <li>Axios</li>
-                                    <li>React Native</li>
-                                    <li>Google Places API</li>
-                                    <li>Clerk Authentication</li>
-                                    <li>Firebase Firestore</li>
-                                </ol>
-
-                                <div class="work-links">
-                                    <a
-                                        href="https://github.com/m4ferreirac/Mappie"
-                                        target="_blank"
-                                        rel="noopener"
-                                        class="link"
-                                        >Explore this project</a
-                                    >
-
-                                    <a
-                                        href="https://github.com/m4ferreirac/Mappie"
-                                        target="_blank"
-                                        rel="noopener"
-                                        title="Source code"
-                                    >
-                                        <img
-                                            src="assets/images/social-links/github.svg"
-                                            alt="GitHub"
-                                            loading="lazy"
-                                        />
-                                    </a>
+                                <ul class="tags">
+                                    <li>Webflow</li><li>Webflow CMS</li><li>SEO</li><li>HTML email</li><li>Pipedrive</li>
+                                </ul>
+                                <div class="card-links">
+                                    <a class="link" href="https://uclockit.pt" target="_blank" rel="noopener">Visit live site</a>
                                 </div>
                             </div>
+                        </article>
 
-                            <picture class="work-img">
+                        <!-- WayNext -->
+                        <article class="card reveal">
+                            <div class="card-visual visual-email" aria-hidden="true">
+                                <div class="email">
+                                    <div class="email-head"><b></b><span></span></div>
+                                    <div class="email-banner"></div>
+                                    <div class="email-lines"><span></span><span></span><span></span></div>
+                                    <div class="email-cols"><i></i><i></i></div>
+                                    <div class="email-btn"></div>
+                                </div>
+                                <div class="clients">
+                                    <span>Outlook</span><span>Gmail</span><span>Dark mode</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-kicker">WayNext · 2024 – 2026</p>
+                                <h4>HTML email for agency clients</h4>
+                                <p>
+                                    Hand-built, responsive email templates from Figma
+                                    and Adobe XD designs for clients in banking, tech
+                                    and consulting, plus WordPress sites during my
+                                    internship. All of it has been sent or launched.
+                                </p>
+                                <ul class="tags">
+                                    <li>HTML email</li><li>Figma</li><li>Adobe XD</li><li>WordPress</li>
+                                </ul>
+                                <p class="card-note">Client work under NDA, details available on request.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <h3 class="sub-label reveal">Projects</h3>
+                    <div class="work-grid work-grid-3">
+                        <!-- Prodify -->
+                        <article class="card reveal">
+                            <div class="card-visual visual-kanban" aria-hidden="true">
+                                <div class="kanban">
+                                    <div class="col"><p>ToDo</p><span></span><span></span><span class="short"></span></div>
+                                    <div class="col"><p>Doing</p><span class="hl"></span><span></span></div>
+                                    <div class="col"><p>Done</p><span></span><span></span><span></span><span class="short"></span></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-kicker">Mobile app + REST API</p>
+                                <h4>Prodify</h4>
+                                <p>
+                                    Kanban task manager with manager and programmer
+                                    roles, productivity stats, CSV export and time
+                                    estimates based on story points. Built solo.
+                                </p>
+                                <ul class="tags">
+                                    <li>React Native</li><li>Expo</li><li>Node.js</li><li>Express</li><li>Firestore</li>
+                                </ul>
+                                <div class="card-links">
+                                    <a class="link" href="https://github.com/m4ferreirac/DDM_LD_Noturno_7" target="_blank" rel="noopener">Source code</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Mappie -->
+                        <article class="card reveal">
+                            <div class="card-visual visual-img">
                                 <img
                                     loading="lazy"
                                     src="assets/images/work/portfolio-mappie.webp"
-                                    alt="Mappie mobile application"
+                                    alt="Screens of the Mappie app showing a map of EV charging stations"
+                                    width="1015"
+                                    height="678"
                                 />
-                            </picture>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-kicker">Mobile app</p>
+                                <h4>Mappie</h4>
+                                <p>
+                                    Finds nearby EV charging stations on an
+                                    interactive map, with search, favourites, station
+                                    details and hand-off to Google or Apple Maps.
+                                </p>
+                                <ul class="tags">
+                                    <li>React Native</li><li>Expo</li><li>Google Places API</li><li>Clerk</li><li>Firestore</li>
+                                </ul>
+                                <div class="card-links">
+                                    <a class="link" href="https://github.com/m4ferreirac/Mappie" target="_blank" rel="noopener">Source code</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Groome -->
+                        <article class="card reveal">
+                            <div class="card-visual visual-img">
+                                <img
+                                    loading="lazy"
+                                    src="assets/images/work/portfolio-groome.webp"
+                                    alt="Screens of the Groome shopping app"
+                                    width="1080"
+                                    height="1080"
+                                />
+                            </div>
+                            <div class="card-body">
+                                <p class="card-kicker">Native Android app</p>
+                                <h4>Groome</h4>
+                                <p>
+                                    Shopping app with a product catalogue, cart,
+                                    wishlist, order history and email-verified sign
+                                    up.
+                                </p>
+                                <ul class="tags">
+                                    <li>Java</li><li>Android SDK</li><li>Firebase Auth</li><li>Realtime DB</li>
+                                </ul>
+                                <div class="card-links">
+                                    <a class="link" href="https://github.com/m4ferreirac/Groome" target="_blank" rel="noopener">Source code</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ SKILLS ============ -->
+            <section class="section" id="skills">
+                <div class="container">
+                    <h2 class="section-label reveal">// skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-group reveal">
+                            <h3>Front-end</h3>
+                            <ul class="tags tags-lg"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>TailwindCSS</li><li>React</li></ul>
+                        </div>
+                        <div class="skill-group reveal">
+                            <h3>Email</h3>
+                            <ul class="tags tags-lg"><li>Responsive HTML email</li><li>Outlook &amp; dark mode testing</li><li>Pipedrive</li></ul>
+                        </div>
+                        <div class="skill-group reveal">
+                            <h3>CMS</h3>
+                            <ul class="tags tags-lg"><li>Webflow</li><li>WordPress</li><li>SimplySite</li></ul>
+                        </div>
+                        <div class="skill-group reveal">
+                            <h3>Mobile &amp; tools</h3>
+                            <ul class="tags tags-lg"><li>React Native (Expo)</li><li>Git</li><li>GitHub</li><li>Figma</li><li>Adobe XD</li></ul>
+                        </div>
+                        <div class="skill-group reveal">
+                            <h3>Back-end</h3>
+                            <ul class="tags tags-lg"><li>Node.js (Express)</li><li>Firebase</li><li>SQL</li><li>NoSQL</li></ul>
+                        </div>
+                        <div class="skill-group reveal">
+                            <h3>Marketing</h3>
+                            <ul class="tags tags-lg"><li>SEO</li><li>Google Ads</li><li>Cookie consent</li></ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="skills">
+            <!-- ============ EDUCATION ============ -->
+            <section class="section" id="education">
                 <div class="container">
-                    <h2 class="h2" id="skills">Skills</h2>
-                    <div class="skills-imgs">
-                        <img
-                            src="assets/images/skills/react-native.webp"
-                            alt="React Native"
-                            class="skills-img"
-                            loading="lazy"
-                            title="React Native"
-                        />
-                        <img
-                            src="assets/images/skills/html.webp"
-                            alt="HTML"
-                            class="skills-img"
-                            loading="lazy"
-                            title="HTML"
-                        />
-                        <img
-                            src="assets/images/skills/css.webp"
-                            alt="CSS"
-                            class="skills-img"
-                            loading="lazy"
-                            title="CSS"
-                        />
-                        <img
-                            src="assets/images/skills/javascript.webp"
-                            alt="Javascript"
-                            class="skills-img"
-                            loading="lazy"
-                            title="Javascript"
-                        />
-                        <img
-                            src="assets/images/skills/github.webp"
-                            alt="github"
-                            class="skills-img"
-                            loading="lazy"
-                            title="github"
-                        />
-                        <img
-                            src="assets/images/skills/firebase.webp"
-                            alt="Firebase"
-                            class="skills-img"
-                            loading="lazy"
-                            title="Firebase"
-                        />
-                        <img
-                            src="assets/images/skills/mssql.webp"
-                            alt="MSSQL"
-                            class="skills-img"
-                            loading="lazy"
-                            title="MSSQL"
-                        />
+                    <h2 class="section-label reveal">// education</h2>
+                    <div class="edu-grid">
+                        <div class="edu reveal">
+                            <span class="tl-date">2024 – 09/2026</span>
+                            <h3>CTeSP in Mobile Device Development</h3>
+                            <p>ISTEC</p>
+                        </div>
+                        <div class="edu reveal">
+                            <span class="tl-date">2020 – 2024</span>
+                            <h3>Professional Course in IT Systems Management and Programming</h3>
+                            <p>INETE</p>
+                        </div>
+                        <div class="edu reveal">
+                            <span class="tl-date">Languages</span>
+                            <h3>Portuguese · English · German</h3>
+                            <p>Native · C1 · B2</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="experience"></section>
+            <!-- ============ CONTACT ============ -->
+            <section class="section contact" id="contact">
+                <div class="container">
+                    <div class="contact-box reveal">
+                        <h2 class="section-label">// contact</h2>
+                        <p class="contact-title">
+                            Have a project or a role in mind?
+                            <span class="accent">Let's talk.</span>
+                        </p>
+                        <div class="contact-actions">
+                            <a class="btn btn-primary" href="mailto:jferreira172003@gmail.com">jferreira172003@gmail.com</a>
+                            <button type="button" class="btn btn-ghost copy-email" data-email="jferreira172003@gmail.com">Copy email</button>
+                        </div>
+                        <ul class="socials">
+                            <li>
+                                <a href="https://github.com/m4ferreirac" target="_blank" rel="noopener">
+                                    <img src="assets/images/social-links/github.svg" alt="" width="20" height="20" />GitHub</a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/joao-ferreira-64379a342/" target="_blank" rel="noopener">
+                                    <img src="assets/images/social-links/linkedin.svg" alt="" width="20" height="20" />LinkedIn</a>
+                            </li>
+                            <li>
+                                <a href="assets/files/CV_JoaoFerreira.pdf" download>
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14" /></svg>Download CV</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <nav>
-                        <ol class="footer-links">
-                            <li class="footer-link">
-                                <a
-                                    title="GitHub"
-                                    href="https://github.com/m4ferreirac"
-                                    target="_blank"
-                                    rel="noopener"
-                                    ><img
-                                        loading="lazy"
-                                        src="assets/images/social-links/github.svg"
-                                        alt="GitHub"
-                                /></a>
-                            </li>
-                            <li class="footer-link">
-                                <a
-                                    title="Linkedin"
-                                    href="https://www.linkedin.com/in/joao-ferreira-64379a342/"
-                                    target="_blank"
-                                    rel="noopener"
-                                    ><img
-                                        loading="lazy"
-                                        src="assets/images/social-links/linkedin.svg"
-                                        alt="Linkedin"
-                                /></a>
-                            </li>
-                        </ol>
-                    </nav>
-                    <label class="theme-switch" for="theme-switch">
-                        <span>Dark Theme</span>
-                        <input
-                            type="checkbox"
-                            id="theme-switch"
-                            role="switch"
-                        />
-                    </label>
-                </div>
+            <div class="container footer-inner">
+                <p>© <span class="year">2026</span> João Ferreira</p>
+                <p>Built by hand with HTML, CSS &amp; JavaScript.</p>
             </div>
         </footer>
     </body>
