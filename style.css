@@ -604,3 +604,20 @@ section[id] {
     scroll-behavior: auto;
   }
 }
+
+.project-meta .when-strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 760px) {
+  .project-meta .when-strong {
+    margin-bottom: 0;
+  }
+}
+
+#experience .project-body h3 {
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 1.15;
+}
