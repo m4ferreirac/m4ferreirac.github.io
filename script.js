@@ -1,110 +1,136 @@
+const root = document.documentElement;
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- Header background on scroll ---------- */
+const header = document.querySelector(".site-header");
+const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 10);
+onScroll();
+window.addEventListener("scroll", onScroll, { passive: true });
+
+/* ---------- Mobile menu ---------- */
 const nav = document.querySelector(".nav");
-const navMenu = document.querySelector(".nav-items");
-const btnToggleNav = document.querySelector(".menu-btn");
-const workEls = document.querySelectorAll(".work-box");
-const workImgs = document.querySelectorAll(".work-img");
-const mainEl = document.querySelector("main");
-const yearEl = document.querySelector(".footer-text span");
+const menuBtn = document.querySelector(".menu-btn");
 
-const toggleNav = () => {
-  nav.classList.toggle("hidden");
-
-  // Prevent screen from scrolling when menu is opened
-  document.body.classList.toggle("lock-screen");
-
-  if (nav.classList.contains("hidden")) {
-    btnToggleNav.textContent = "menu";
-  } else {
-    setTimeout(() => {
-      btnToggleNav.textContent = "close";
-    }, 475);
-  }
+const setMenu = (open) => {
+  nav.classList.toggle("open", open);
+  menuBtn.setAttribute("aria-expanded", String(open));
+  menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  document.body.classList.toggle("lock", open);
 };
 
-btnToggleNav.addEventListener("click", toggleNav);
-
-navMenu.addEventListener("click", (e) => {
-  if (e.target.localName === "a") {
-    toggleNav();
+menuBtn.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
+nav.addEventListener("click", (e) => {
+  if (e.target.closest("a")) setMenu(false);
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && nav.classList.contains("open")) {
+    setMenu(false);
+    menuBtn.focus();
   }
 });
-
-document.body.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && !nav.classList.contains("hidden")) {
-    toggleNav();
-  }
+window.matchMedia("(min-width: 861px)").addEventListener("change", (e) => {
+  if (e.matches) setMenu(false);
 });
 
-// Animating work instances on scroll
-
-workImgs.forEach((workImg) => workImg.classList.add("transform"));
-
-let observer = new IntersectionObserver(
-  (entries) => {
-    const [entry] = entries;
-    const [textbox, picture] = Array.from(entry.target.children);
-    if (entry.isIntersecting) {
-      picture.classList.remove("transform");
-      Array.from(textbox.children).forEach(
-        (el) => (el.style.animationPlayState = "running")
-      );
-    }
-  },
-  { threshold: 0.3 }
-);
-
-workEls.forEach((workEl) => {
-  observer.observe(workEl);
+/* ---------- Theme toggle ---------- */
+document.querySelector(".theme-toggle").addEventListener("click", () => {
+  const next = root.dataset.theme === "light" ? "dark" : "light";
+  root.dataset.theme = next;
+  try {
+    localStorage.setItem("theme", next);
+  } catch (e) {}
 });
 
-// Toggle theme and store user preferred theme for future
-const switchThemeEl = document.querySelector('input[type="checkbox"]');
-const storedTheme = localStorage.getItem("theme");
+/* ---------- Reveal on scroll ---------- */
+const revealEls = document.querySelectorAll(".reveal");
 
-switchThemeEl.checked = storedTheme === "dark" || storedTheme === null;
+// Stagger siblings that enter together
+document.querySelectorAll(".work-grid, .skills-grid, .edu-grid, .timeline, .hero-inner").forEach((group) => {
+  group.querySelectorAll(":scope > .reveal").forEach((el, i) => el.style.setProperty("--d", `${i * 0.08}s`));
+});
 
-switchThemeEl.addEventListener("click", () => {
-  const isChecked = switchThemeEl.checked;
+if ("IntersectionObserver" in window && !reduceMotion) {
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
+  revealEls.forEach((el) => io.observe(el));
+} else {
+  revealEls.forEach((el) => el.classList.add("in"));
+}
 
-  if (!isChecked) {
-    document.body.classList.remove("dark");
-    document.body.classList.add("light");
-    localStorage.setItem("theme", "light");
-    switchThemeEl.checked = false;
+/* ---------- Active nav link ---------- */
+const navLinks = [...document.querySelectorAll(".nav-items a[href^='#']")];
+const sections = navLinks
+  .map((a) => document.querySelector(a.getAttribute("href")))
+  .filter(Boolean);
+
+if ("IntersectionObserver" in window) {
+  const spy = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((a) =>
+          a.classList.toggle("active", a.getAttribute("href") === `#${entry.target.id}`)
+        );
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px" }
+  );
+  sections.forEach((s) => spy.observe(s));
+}
+
+/* ---------- Typing effect in the hero ---------- */
+const typedEl = document.querySelector(".typed");
+const words = ["fast", "responsive", "pixel-perfect", "accessible"];
+
+if (typedEl) {
+  if (reduceMotion) {
+    typedEl.textContent = words[0];
   } else {
-    document.body.classList.add("dark");
-    document.body.classList.remove("light");
-    localStorage.setItem("theme", "dark");
+    let w = 0;
+    let c = 0;
+    let deleting = false;
+    const tick = () => {
+      const word = words[w];
+      c += deleting ? -1 : 1;
+      typedEl.textContent = word.slice(0, c);
+      let delay = deleting ? 45 : 90;
+      if (!deleting && c === word.length) {
+        deleting = true;
+        delay = 1800;
+      } else if (deleting && c === 0) {
+        deleting = false;
+        w = (w + 1) % words.length;
+        delay = 350;
+      }
+      setTimeout(tick, delay);
+    };
+    tick();
   }
-});
+}
 
-// Trap the tab when menu is opened
-const lastFocusedEl = document.querySelector('a[data-focused="last-focused"]');
+/* ---------- Copy email ---------- */
+const copyBtn = document.querySelector(".copy-email");
+if (copyBtn) {
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(copyBtn.dataset.email);
+      copyBtn.textContent = "Copied ✓";
+    } catch (e) {
+      copyBtn.textContent = copyBtn.dataset.email;
+    }
+    setTimeout(() => (copyBtn.textContent = "Copy email"), 2000);
+  });
+}
 
-document.body.addEventListener("keydown", (e) => {
-  if (e.key === "Tab" && document.activeElement === lastFocusedEl) {
-    e.preventDefault();
-    btnToggleNav.focus();
-  }
-});
-
-// Rotating logos animation
-const logosWrappers = document.querySelectorAll(".logo-group");
-
-const sleep = (number) => new Promise((res) => setTimeout(res, number));
-
-logosWrappers.forEach(async (logoWrapper, i) => {
-  const logos = Array.from(logoWrapper.children);
-  await sleep(1400 * i);
-  setInterval(() => {
-    let temp = logos[0];
-    logos[0] = logos[1];
-    logos[1] = logos[2];
-    logos[2] = temp;
-    logos[0].classList.add("hide", "to-top");
-    logos[1].classList.remove("hide", "to-top", "to-bottom");
-    logos[2].classList.add("hide", "to-bottom");
-  }, 5600);
-});
-
-yearEl.textContent = new Date().getFullYear();
+/* ---------- Footer year ---------- */
+const yearEl = document.querySelector(".year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
