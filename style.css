@@ -1370,3 +1370,16 @@ strong {
     transform: none;
   }
 }
+
+/* Real screenshot inside the browser frame */
+.browser-shot {
+  height: auto;
+  width: 90%;
+}
+
+.browser-shot img {
+  width: 100%;
+  height: auto;
+  object-fit: initial;
+  transform: none !important;
+}
