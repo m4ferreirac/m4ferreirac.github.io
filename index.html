@@ -43,7 +43,7 @@
                 if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
             } catch (e) {}
         </script>
-        <link rel="stylesheet" href="style.css?v=4" />
+        <link rel="stylesheet" href="style.css?v=5" />
     </head>
 
     <body>
@@ -53,8 +53,8 @@
             <a href="#" class="name" aria-label="João Ferreira, back to top"><span class="g">&lt;</span>JF<span class="g">/&gt;</span></a>
             <nav aria-label="Main">
                 <ul class="top-links">
-                    <li><a href="#work">Work</a></li>
-                    <li class="hide-sm"><a href="#experience">Experience</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li class="hide-sm"><a href="#work">Projects</a></li>
                     <li><a href="#about">About</a></li>
                     <li>
                         <a href="assets/files/CV_JoaoFerreira.pdf" target="_blank" rel="noopener">CV</a>
@@ -83,35 +83,34 @@
                     consulting.
                 </p>
                 <div class="intro-btns">
-                    <a href="#work" class="btn btn-primary">See my work</a>
+                    <a href="#experience" class="btn btn-primary">See my work</a>
                     <a href="assets/files/CV_JoaoFerreira.pdf" target="_blank" rel="noopener" class="btn btn-ghost">View CV ↗</a>
                 </div>
             </section>
 
-            <!-- Work -->
-            <section class="wrap" id="work">
+            <!-- Experience -->
+            <section class="wrap" id="experience">
                 <header class="sec-head">
-                    <h2>// work</h2>
+                    <h2>// experience</h2>
                     <span>2024 – 2026</span>
                 </header>
 
                 <article class="project">
                     <div class="project-meta">
-                        <span class="num">01</span>
-                        <span>2026</span>
-                        <span>Client · uClockit</span>
+                        <span class="when-strong">Sep – Nov 2026</span>
+                        <span>Remote</span>
                     </div>
                     <div class="project-body">
-                        <h3>uclockit.pt</h3>
+                        <h3>Front-End Developer, <span class="g">uClockit</span></h3>
                         <p>
-                            I moved the whole site off SimplySite and rebuilt it in
-                            Webflow, page by page. That included the blog on
-                            Webflow CMS, the DNS and domain switch, SEO, cookie
-                            consent and Google Ads. I also wrote the monthly
-                            newsletter in table-based HTML and automated its sending
-                            through Pipedrive.
+                            I moved uclockit.pt off SimplySite and rebuilt it in
+                            Webflow, page by page: the blog on Webflow CMS, the DNS
+                            and domain switch, SEO, cookie consent and Google Ads. I
+                            also built the monthly newsletter in table-based HTML,
+                            tested it in Outlook, Gmail and dark mode, and set up
+                            Pipedrive automations so it goes out on its own.
                         </p>
-                        <p class="stack">Webflow, Webflow CMS, HTML email, Pipedrive, SEO</p>
+                        <p class="stack">Webflow, DNS, HTML email, Pipedrive, SEO, Google Ads</p>
                         <a class="arrow-link" href="https://uclockit.pt" target="_blank" rel="noopener">Visit uclockit.pt</a>
                     </div>
                     <figure class="shot shot-web">
@@ -127,27 +126,68 @@
 
                 <article class="project">
                     <div class="project-meta">
-                        <span class="num">02</span>
-                        <span>2024 – 2026</span>
-                        <span>Client · WayNext</span>
+                        <span class="when-strong">Apr – Aug 2026</span>
+                        <span>Internship · Remote</span>
                     </div>
                     <div class="project-body">
-                        <h3>Email for banks, tech and consulting firms</h3>
+                        <h3>Front-End Developer Intern, <span class="g">uClockit</span></h3>
                         <p>
-                            As a freelancer for the agency, I turned Figma and Adobe
-                            XD designs into HTML email templates written from
-                            scratch, made to hold up in Outlook, Gmail and dark
-                            mode. Before that, as an intern, I built and maintained
-                            WordPress sites.
+                            The final internship of my CTeSP. I gave the SimplySite
+                            websites of uClockit and its parent company,
+                            makeitspecial.pt, a more modern look with custom HTML,
+                            CSS and JavaScript, which led to the developer role
+                            above.
                         </p>
-                        <p class="stack">HTML email, Figma, Adobe XD, WordPress</p>
+                        <p class="stack">SimplySite, HTML, CSS, JavaScript</p>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <div class="project-meta">
+                        <span class="when-strong">Aug 2024 – Aug 2026</span>
+                        <span>Freelance</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>Front-End Developer, <span class="g">WayNext</span></h3>
+                        <p>
+                            I turned the agency's Figma and Adobe XD designs into
+                            HTML email templates written from scratch, made to hold
+                            up across email clients. Clients included companies in
+                            banking, tech and consulting.
+                        </p>
+                        <p class="stack">HTML email, CSS, JavaScript, Figma, Adobe XD</p>
                         <p class="note">Client work, shared on request.</p>
                     </div>
                 </article>
 
                 <article class="project">
                     <div class="project-meta">
-                        <span class="num">03</span>
+                        <span class="when-strong">May – Aug 2024</span>
+                        <span>Internship</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>Front-End Developer Intern, <span class="g">WayNext</span></h3>
+                        <p>
+                            Helped build and customise WordPress sites and looked
+                            after their plugins, built HTML email templates and
+                            more complex HTML components that had to work well
+                            across devices.
+                        </p>
+                        <p class="stack">WordPress, HTML, CSS, HTML email</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Projects -->
+            <section class="wrap" id="work">
+                <header class="sec-head">
+                    <h2>// projects</h2>
+                    <span>Built solo</span>
+                </header>
+
+                <article class="project">
+                    <div class="project-meta">
+                        <span class="num">01</span>
                         <span>2025</span>
                         <span>Course project · solo</span>
                     </div>
@@ -166,7 +206,7 @@
 
                 <article class="project">
                     <div class="project-meta">
-                        <span class="num">04</span>
+                        <span class="num">02</span>
                         <span>2025</span>
                         <span>Course project · solo</span>
                     </div>
@@ -193,7 +233,7 @@
 
                 <article class="project">
                     <div class="project-meta">
-                        <span class="num">05</span>
+                        <span class="num">03</span>
                         <span>2025</span>
                         <span>Course project · solo</span>
                     </div>
@@ -216,49 +256,6 @@
                         />
                     </figure>
                 </article>
-            </section>
-
-            <!-- Experience -->
-            <section class="wrap" id="experience">
-                <header class="sec-head">
-                    <h2>// experience</h2>
-                    <span>2+ years</span>
-                </header>
-
-                <ol class="jobs">
-                    <li>
-                        <span class="when">Apr – Nov 2026</span>
-                        <div>
-                            <h3>Front-End Developer, <em>uClockit</em></h3>
-                            <p>
-                                Remote. Webflow migration of uclockit.pt, refreshed
-                                the SimplySite sites of uClockit and makeitspecial.pt,
-                                monthly newsletter and Pipedrive automations, Google
-                                Ads, cookie consent and SEO.
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="when">Aug 2024 – Aug 2026</span>
-                        <div>
-                            <h3>Front-End Developer (freelance), <em>WayNext</em></h3>
-                            <p>
-                                HTML email templates from Figma and Adobe XD designs
-                                for clients in banking, tech and consulting.
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="when">May – Aug 2024</span>
-                        <div>
-                            <h3>Front-End Developer Intern, <em>WayNext</em></h3>
-                            <p>
-                                WordPress sites and plugins, HTML email templates
-                                and responsive HTML components.
-                            </p>
-                        </div>
-                    </li>
-                </ol>
             </section>
 
             <!-- About -->
