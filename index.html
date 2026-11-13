@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,18 +24,11 @@
             content="https://m4ferreirac.github.io/assets/images/work/portfolio-uclockit.webp"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="theme-color" content="#f3f0e8" />
+        <meta name="theme-color" content="#0e0d0c" />
 
         <link
             rel="icon"
-            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23171614'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='34' fill='%23f3f0e8'%3EJF%3C/text%3E%3C/svg%3E"
-        />
-
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0d0c'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-weight='700' font-size='28' fill='%23c6f24e'%3EJF%3C/text%3E%3C/svg%3E"
         />
         <link
             rel="preload"
@@ -44,14 +37,20 @@
             type="font/woff2"
             crossorigin
         />
-        <link rel="stylesheet" href="style.css?v=3" />
+        <script>
+            try {
+                const t = localStorage.getItem("theme");
+                if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+            } catch (e) {}
+        </script>
+        <link rel="stylesheet" href="style.css?v=4" />
     </head>
 
     <body>
         <a class="skip-link" href="#main">Skip to content</a>
 
         <header class="top wrap">
-            <a href="#" class="name">João Ferreira</a>
+            <a href="#" class="name" aria-label="João Ferreira, back to top"><span class="g">&lt;</span>JF<span class="g">/&gt;</span></a>
             <nav aria-label="Main">
                 <ul class="top-links">
                     <li><a href="#work">Work</a></li>
@@ -63,39 +62,36 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+            <button type="button" class="theme-toggle" aria-label="Switch between dark and light theme">
+                <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" /><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" /></svg>
+                <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" /></svg>
+            </button>
         </header>
 
         <main id="main">
             <!-- Intro -->
             <section class="intro wrap">
+                <p class="intro-kicker">Lisbon, Portugal · available for new roles</p>
                 <h1 class="display">
-                    Front-end developer in Lisbon, building websites,
-                    <em>HTML&nbsp;emails</em> and the occasional mobile app.
+                    <span class="hi">Hi, I'm João Ferreira</span>
+                    <span class="role"><span class="g">&lt;</span>Front-End Developer<span class="g">&nbsp;/&gt;</span></span>
                 </h1>
-
-                <div class="intro-meta">
-                    <dl>
-                        <div>
-                            <dt>Previously</dt>
-                            <dd>uClockit, WayNext</dd>
-                        </div>
-                        <div>
-                            <dt>Studying</dt>
-                            <dd>Mobile Development, ISTEC</dd>
-                        </div>
-                        <div>
-                            <dt>Status</dt>
-                            <dd>Available for new roles</dd>
-                        </div>
-                    </dl>
-                    <a class="intro-mail" href="mailto:jferreira172003@gmail.com">jferreira172003@gmail.com</a>
+                <p class="intro-text">
+                    I build websites in Webflow and WordPress, HTML emails that
+                    hold up in Outlook, and mobile apps in React Native. Two years
+                    of production work for agency clients in banking, tech and
+                    consulting.
+                </p>
+                <div class="intro-btns">
+                    <a href="#work" class="btn btn-primary">See my work</a>
+                    <a href="assets/files/CV_JoaoFerreira.pdf" target="_blank" rel="noopener" class="btn btn-ghost">View CV ↗</a>
                 </div>
             </section>
 
             <!-- Work -->
             <section class="wrap" id="work">
                 <header class="sec-head">
-                    <h2>Selected work</h2>
+                    <h2>// work</h2>
                     <span>2024 – 2026</span>
                 </header>
 
@@ -225,7 +221,7 @@
             <!-- Experience -->
             <section class="wrap" id="experience">
                 <header class="sec-head">
-                    <h2>Experience</h2>
+                    <h2>// experience</h2>
                     <span>2+ years</span>
                 </header>
 
@@ -268,7 +264,7 @@
             <!-- About -->
             <section class="wrap" id="about">
                 <header class="sec-head">
-                    <h2>About</h2>
+                    <h2>// about</h2>
                 </header>
 
                 <div class="about">
@@ -318,7 +314,8 @@
 
             <!-- Contact -->
             <section class="wrap contact" id="contact">
-                <p class="contact-kicker">Have a project or a role in mind?</p>
+                <h2 class="contact-label">// contact</h2>
+                <p class="contact-kicker">Have a project or a role in mind? Let's talk.</p>
                 <a class="contact-mail" href="mailto:jferreira172003@gmail.com">jferreira172003@gmail.com</a>
             </section>
         </main>
@@ -331,6 +328,12 @@
 
         <script>
             document.querySelector(".year").textContent = new Date().getFullYear();
+            document.querySelector(".theme-toggle").addEventListener("click", () => {
+                const root = document.documentElement;
+                const next = root.dataset.theme === "light" ? "dark" : "light";
+                root.dataset.theme = next;
+                try { localStorage.setItem("theme", next); } catch (e) {}
+            });
         </script>
     </body>
 </html>
